@@ -1,14 +1,6 @@
 /*
 
-Add a function:
 
-removeStudent(int id)
-
-It should:
-
-Search for the student by ID.
-If found, remove that student from the vector.
-If not found, print "Student not found".
 
 */
 
