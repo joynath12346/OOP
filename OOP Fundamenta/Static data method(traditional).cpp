@@ -1,10 +1,5 @@
 /*
-
-Make the Student class properly encapsulated.
-
-Your name, id, dept, and cgpa must remain private.
-
-Add getter and setter functions for all four.
+add counter 
 
 */
 
