@@ -20,9 +20,11 @@ private:
     int id = -1;
     string dept = "Unknown";
     float cgpa = -1;
-    static int  studentCount;
-
+    inline static int  studentCount;
+    
 public:
+
+    
 
 
     void setName(string name) {
@@ -66,15 +68,17 @@ public:
     Student(string name, int id){
         setName(name);
         setId(id);
+        studentCount++;
     }
     Student(string name, int id, string dept, float cgpa){
         setName(name);
         setId(id);
         setDept(dept);
         setCgpa(cgpa);
+        studentCount++;
     }
     
-     static void getStudentCounter() {
+     static int getStudentCount() {
         return studentCount;
     }
     
@@ -87,7 +91,7 @@ public:
     }
 };
 
-Student::studentCount = 0;
+
 
 int main() {
 
