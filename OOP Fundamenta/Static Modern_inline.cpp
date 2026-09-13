@@ -16,7 +16,7 @@ private:
     int id = -1;
     string dept = "Unknown";
     float cgpa = -1;
-    inline static int  studentCount;
+    inline static int  studentCount = 0;
     
 public:
 
