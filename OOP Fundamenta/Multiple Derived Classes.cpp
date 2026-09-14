@@ -89,7 +89,7 @@ public:
         cout << "Name: " << getName() << endl; // this the main magic here
         cout << "ID: " << getId() << endl;
         cout << "Department: " << getDept() << endl;
-        cout << "CGPA: " << getSalary() << endl;
+        cout << "Salary: " << getSalary() << endl;
     }
 };
 
