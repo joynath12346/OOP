@@ -1,0 +1,216 @@
+/*
+
+implement Department
+
+Person
+├── Student
+│   ├── Department  ← HAS-A
+│   └── Courses     ← HAS-A
+│
+└── Teacher
+    └── Courses     ← HAS-A
+
+Department
+Course
+
+*/
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+
+class Course {
+    string courseCode;
+    string courseName;
+    int credit;  
+public:
+    
+    string getCourseCode() {
+        return courseCode;
+    }
+    
+    string getCourseName() {
+        return courseName;
+    }
+    
+    int getCredit() {
+        return credit;
+    }
+    
+    
+    void setCourseCode(string courseCode) {
+        this->courseCode = courseCode;
+    }
+    void setCourseName(string courseName) {
+        this->courseName = courseName;
+    }
+    void setCredit (int credit) {
+        if (credit > 0) {
+            this->credit = credit;
+        }
+    }
+    
+
+    Course(string courseCode, string courseName, int credit)
+        : courseName(courseName) , courseCode(courseCode) , credit(3) {
+            setCredit(credit);
+        }
+    
+    void displayCourse() {
+        cout << "Course Code: " << getCourseCode() << endl;
+        cout << "Course Name: " << getCourseName() << endl;
+        cout << "Credit: " << getCredit() << endl;
+    }
+};
+
+class Department {
+    string departmentCode;
+    string departmentName;
+
+public:
+
+    void setDepartmentCode(string departmentCode) {
+        this->departmentCode = departmentCode;
+    }
+
+    void setDepartmentName(string departmentName) {
+        this->departmentName = departmentName;
+    }
+
+    string getDepartmentCode() {
+        return departmentCode;
+    }
+
+    string getDepartmentName() {
+        return departmentName;
+    }
+
+    Department(string departmentCode, string departmentName)
+        : departmentCode(departmentCode), departmentName(departmentName) {
+    }
+
+    void displayDepartment() {
+        cout << "Department Code: " << getDepartmentCode() << endl;
+        cout << "Department Name: " << getDepartmentName() << endl;
+    }
+};
+
+class Person {
+    string name;
+    int id;
+    
+public:
+    void setName(string name) {
+        this->name = name;
+    }
+    void setId(int id) {
+        this->id = id;
+    }
+    string getName() {
+        return name;
+    }
+    int getId() {
+        return id;
+    }
+    Person(string name , int id) : name(name) , id(id) {
+        
+    }
+    virtual void displayInfo() = 0;
+};
+
+
+class Student: public Person {
+    //string dept = "Unknown";
+    Department dept;
+    float cgpa = -1;
+    vector<Course> courses;
+    
+public:
+
+    void setDept(Department dept) {
+        this->dept = dept;
+    }
+    void setCgpa(float cgpa) {
+        if(0 <= cgpa && cgpa <= 4)  this->cgpa = cgpa;
+    }
+    
+    Department getDept() {
+        return dept;
+    }
+    float getCgpa() {
+        return cgpa;
+    }
+    
+    Student(string name , int id , Department dept , float cgpa) : Person(name , id) , dept(dept) , cgpa(cgpa) {
+        
+    }
+    
+    
+    void displayInfo() override {
+        cout << "Name: " << getName() << endl; 
+        cout << "ID: " << getId() << endl;
+        getDept().displayDepartment();
+        cout << "CGPA: " << getCgpa() << endl;
+    }
+    
+    
+    void enrollCourse(const Course& course) {
+        courses.push_back(course);
+    }
+    void displayCourses() {
+        for (auto u : courses) {
+            u.displayCourse();
+        }
+    }
+};
+
+class Teacher :public Person {
+    string dept;
+    double salary;
+    vector<Course> courses;
+public:
+
+    string getDept() {
+        return dept;
+    }
+    double getSalary() {
+        return salary;
+    }
+    
+    void setDept(string dept) {
+        this->dept = dept;
+    }
+    void setSalary(double salary) {
+        this->salary = salary;
+    }
+    Teacher(string name, int id , string dept , double salary) : Person(name , id) , dept(dept) , salary(salary) {
+        
+    }
+    void displayInfo() override {
+        cout << "Name: " << getName() << endl; // this the main magic here
+        cout << "ID: " << getId() << endl;
+        cout << "Department: " << getDept() << endl;
+        cout << "Salary: " << getSalary() << endl;
+    }
+    void displayCourses() {
+        for (auto u : courses) {
+            u.displayCourse();
+        }
+    }
+    void assignCourse(const Course& course) {
+        courses.push_back(course);
+    }
+};
+
+int main() {
+    Teacher t1("Rahim", 201, "CSE", 50000);
+
+    Course c1("CSE101", "OOP", 3);
+    Course c2("CSE102", "DBMS", 3);
+    
+    t1.assignCourse(c1);
+    t1.assignCourse(c2);
+    
+    t1.displayCourses();
+}
