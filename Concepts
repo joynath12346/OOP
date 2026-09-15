@@ -24,4 +24,6 @@ virtual void draw() = 0; declares a pure virtual function, forcing derived class
 
 
 
+const Department&   →   functions called on it should be const
+
 
