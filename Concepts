@@ -1,0 +1,7 @@
+
+
+Non-virtual function
+→ pointer/reference type decides
+
+Virtual function
+→ actual object type decides
