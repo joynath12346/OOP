@@ -10,3 +10,18 @@ Virtual function
 The = 0 means:
 
 This function has no implementation in the base class, and derived classes are required to implement it.
+
+
+A pure virtual function is a virtual function with no implementation in the base class, declared using = 0. 
+A class with at least one pure virtual function is an abstract class that cannot be instantiated and serves
+as a blueprint for derived classes, which must provide their own implementation.
+
+A class with at least one pure virtual function becomes an abstract class and Objects of abstract classes cannot be created directly.
+Abstract classes are used to define interfaces and ensure common structure among derived classes.
+Useful in polymorphism where different classes share the same interface but have different behaviors.
+A pure virtual function forces derived classes to override it.
+virtual void draw() = 0; declares a pure virtual function, forcing derived classes to provide their own implementation.
+
+
+
+
