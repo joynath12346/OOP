@@ -5,3 +5,8 @@ Non-virtual function
 
 Virtual function
 → actual object type decides
+
+
+The = 0 means:
+
+This function has no implementation in the base class, and derived classes are required to implement it.
